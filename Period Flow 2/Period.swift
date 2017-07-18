@@ -8,13 +8,16 @@
 
 import Foundation
 import SwiftDate
+import CloudKit
 
 class Period {
     
+    // FIXME: - When
+    
     // MARK: - Properties
-    var dates: [Date] = []
     var startDate: Date
     var endDate: Date
+    var recordID: CKRecordID?
     
     var predictionDate: Date? {
         let cycleDays = 28
@@ -22,7 +25,6 @@ class Period {
         return futureDate
     }
     
-    /// Populates an array of dates in between start and end date of object
     var assumedDates: [Date] {
         
         var dates = [Date]()
@@ -38,18 +40,18 @@ class Period {
             } while nextDate < endDate
         }
         
+        dates.sort(by: { $0.compare($1) == .orderedAscending })
         return dates
     }
     
     init(date: Date) {
-        dates.append(date)
         startDate = date
         endDate = date
     }
     
-    convenience init(dates: [Date], startDate: Date, endDate: Date) {
+    convenience init(startDate: Date, endDate: Date, recordID: CKRecordID) {
         self.init(date: startDate)
-        self.dates = (dates)
         self.endDate = endDate
+        self.recordID = recordID
     }
 }

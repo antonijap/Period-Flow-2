@@ -47,19 +47,10 @@ open class JTAppleCalendarView: UICollectionView {
     }
     
     /// The scroll direction of the sections in JTAppleCalendar.
-    open var scrollDirection: UICollectionViewScrollDirection! {
-        didSet {
-            if oldValue == scrollDirection { return }
-            calendarViewLayout.invalidateLayout()
-        }
-    }
+    open var scrollDirection: UICollectionViewScrollDirection!
     
     /// Enables/Disables the stretching of date cells. When enabled cells will stretch to fit the width of a month in case of a <= 5 row month.
-    open var allowsDateCellStretching = true {
-        didSet {
-            calendarViewLayout.invalidateLayout()
-        }
-    }
+    open var allowsDateCellStretching = true
     
     /// Alerts the calendar that range selection will be checked. If you are
     /// not using rangeSelection and you enable this,
@@ -183,17 +174,9 @@ open class JTAppleCalendarView: UICollectionView {
         return retval
     }
     
-    open var sectionInset: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0) {
-        didSet { calendarViewLayout.invalidateLayout() }
-        
-    }
-    open var minimumInteritemSpacing: CGFloat = 0 {
-        didSet { calendarViewLayout.invalidateLayout() }
-    }
-    
-    open var minimumLineSpacing: CGFloat = 0 {
-        didSet { calendarViewLayout.invalidateLayout() }
-    }
+    open var sectionInset: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+    open var minimumInteritemSpacing: CGFloat = 0
+    open var minimumLineSpacing: CGFloat = 0
     
     lazy var theData: CalendarData = {
         return self.setupMonthInfoDataForStartAndEndDate()
@@ -229,7 +212,6 @@ open class JTAppleCalendarView: UICollectionView {
     open override var semanticContentAttribute: UISemanticContentAttribute {
         didSet {
             transform.a = semanticContentAttribute == .forceRightToLeft ? -1 : 1
-            calendarViewLayout.invalidateLayout()
         }
     }
     
@@ -731,8 +713,7 @@ extension JTAppleCalendarView {
             validDateInfo = nonNilDateInfo
         } else {
             guard let newDateInfo = dateOwnerInfoFromPath(indexPath) else {
-                developerError(string: "Error this should not be nil. " +
-                    "Contact developer Jay on github by opening a request")
+                developerError(string: "Error this should not be nil. Contact developer Jay on github by opening a request")
                 return CellState(isSelected: false,
                                  text: "",
                                  dateBelongsTo: .thisMonth,

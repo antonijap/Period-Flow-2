@@ -1,5 +1,5 @@
 PODS:
-  - JTAppleCalendar (7.0.3)
+  - JTAppleCalendar (7.0.4)
   - PromiseKit (4.2.2):
     - PromiseKit/Foundation (= 4.2.2)
     - PromiseKit/QuartzCore (= 4.2.2)
@@ -19,7 +19,7 @@ DEPENDENCIES:
   - SwiftDate (~> 4.0)
 
 SPEC CHECKSUMS:
-  JTAppleCalendar: 25bc075b9f7564704cfd915a0c515324d8c3cb82
+  JTAppleCalendar: 6def48ecd0daae1d5baaa45e813124c2a20b184d
   PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
   SwiftDate: 2dfdebd4f67ae71c9c3e2413ee3c56947f302858
 

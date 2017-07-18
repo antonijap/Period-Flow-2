@@ -11,8 +11,11 @@ import UIKit
 
 
 enum Color {
-    static let primary = UIColor.rgb(red: 85, green: 80, blue: 227, alpha: 1.0)
-    static let accent = UIColor.rgb(red: 255, green: 254, blue: 179, alpha: 1.0)
+    static let primary = UIColor.rgb(red: 255, green: 60, blue: 121, alpha: 1.0)
+    static let accent = UIColor.rgb(red: 30, green: 28, blue: 95, alpha: 1.0)
+    static let blackWithOpacity = UIColor.rgb(red: 0, green: 0, blue: 0, alpha: 0.2)
+    static let whiteWithOpacity = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 0.3)
+
 }
 
 extension UIColor {

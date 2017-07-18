@@ -25,13 +25,7 @@
 /// The JTAppleCell class defines the attributes and
 /// behavior of the cells that appear in JTAppleCalendarView objects.
 open class JTAppleCell: UICollectionViewCell {
-    
-    @available(*, unavailable, message: "Please use cellState.isSelected instead")
-    open override var isSelected: Bool {
-        get { return super.isSelected }
-        set { super.isSelected = newValue }
-    }
-    
+        
     /// Cell view that will be customized
 	public override init(frame: CGRect) {
 		super.init(frame: frame)

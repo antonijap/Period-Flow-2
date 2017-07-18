@@ -43,7 +43,8 @@ extension JTAppleCalendarView: UICollectionViewDelegate, UICollectionViewDataSou
     /// to the specified item in the collection view.
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let delegate = calendarDelegate else {
-            developerError(string: "Cell was not of type JTAppleCell")
+            print("Your delegate does not conform to JTAppleCalendarViewDelegate")
+            assert(false)
             return UICollectionViewCell()
         }
         restoreSelectionStateForCellAtIndexPath(indexPath)
@@ -76,11 +77,10 @@ extension JTAppleCalendarView: UICollectionViewDelegate, UICollectionViewDataSou
     public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if let
             delegate = calendarDelegate,
-            let infoOfDateUserSelected = dateOwnerInfoFromPath(indexPath),
-            let cell = collectionView.cellForItem(at: indexPath) as? JTAppleCell {
-            let cellState = cellStateFromIndexPath(indexPath,
-                                                   withDateInfo: infoOfDateUserSelected)
-            return delegate.calendar(self, shouldSelectDate: infoOfDateUserSelected.date, cell: cell, cellState: cellState)
+            let infoOfDateUserSelected = dateOwnerInfoFromPath(indexPath) {
+                let cell = collectionView.cellForItem(at: indexPath) as? JTAppleCell
+                let cellState = cellStateFromIndexPath(indexPath, withDateInfo: infoOfDateUserSelected)
+                return delegate.calendar(self, shouldSelectDate: infoOfDateUserSelected.date, cell: cell, cellState: cellState)
         }
         return false
     }
@@ -90,10 +90,10 @@ extension JTAppleCalendarView: UICollectionViewDelegate, UICollectionViewDataSou
     public func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
         if
             let delegate = calendarDelegate,
-            let infoOfDateDeSelectedByUser = dateOwnerInfoFromPath(indexPath),
-            let cell = collectionView.cellForItem(at: indexPath) as? JTAppleCell {
-            let cellState = cellStateFromIndexPath(indexPath, withDateInfo: infoOfDateDeSelectedByUser)
-            return delegate.calendar(self, shouldDeselectDate: infoOfDateDeSelectedByUser.date, cell: cell, cellState: cellState)
+            let infoOfDateDeSelectedByUser = dateOwnerInfoFromPath(indexPath) {
+                let cell = collectionView.cellForItem(at: indexPath) as? JTAppleCell
+                let cellState = cellStateFromIndexPath(indexPath, withDateInfo: infoOfDateDeSelectedByUser)
+                return delegate.calendar(self, shouldDeselectDate: infoOfDateDeSelectedByUser.date, cell: cell, cellState: cellState)
         }
         return false
     }
